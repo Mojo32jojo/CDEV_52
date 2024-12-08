@@ -1,0 +1,74 @@
+using System;
+
+class MainClass
+{
+    public static void Main(string[] args)
+    {
+        static void ShowArray(int[] array, bool IsSort = false)
+        {
+            int[] result = array;
+            if (IsSort == true)
+            {
+                result = SortArray(array);
+            }
+            foreach (var num in result)
+            {
+                Console.WriteLine(num);
+            }
+        }
+        static int[] GetArrayFromConsole(int num = 5)
+        {
+            var result = new int[num];
+            for (int i = 0; i < result.Length; i++)
+            {
+                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+                result[i] = int.Parse(Console.ReadLine());
+            }
+            return result;
+        }
+        
+
+        static void SortArray(in int[] array, out int[] sorteddesc, out int[] sortedasc)
+        {
+			sorteddesc = SortArrayDesc(array);
+            sortedasc = SortArrayAsc(array);
+
+		}
+
+
+        static int[] SortArrayAsc(int[] array) //сортировка массива от большего к меньшему
+		{
+            int temp = 0;
+            for (int i = 0; i < array.Length; i++)
+                for (int j = i + 1; j < array.Length; j++)
+                    if (array[i] > array[j])
+                    {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+
+		static int[] SortArrayDesc(int[] array) //сортировка массива от меньшего к большему
+			{
+			int temp = 0;
+			for (int i = 0; i < array.Length; i++)
+				for (int j = i + 1; j < array.Length; j++)
+					if (array[i] < array[j])
+					{
+						temp = array[i];
+						array[i] = array[j];
+						array[j] = temp;
+					}
+
+				return array;
+
+        }
+
+        var massiv = GetArrayFromConsole(10);
+        ShowArray(massiv, true);
+
+
+
+        Console.ReadKey();
+    }
+}
