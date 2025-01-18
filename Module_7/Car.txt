@@ -1,0 +1,57 @@
+namespace Leason_SF
+{
+	abstract class Car<TEngine> wher TEngine : Engine
+	{
+		public TEngine Engine ;
+		
+		public virtual void ChangePart<TCarPart> (TCarPart newPart) wher TCarPart : CarPart
+		{
+		}
+
+	}
+
+	abstract class Engine
+	{
+		static void ShowEngineType()
+		{
+		}
+	}
+
+	class ElectricEngine : Engine
+	{
+	}
+
+	class GasEngine : Engine
+	{
+	}
+	
+	abstract class CarPart {}
+	
+	public class Battery : CarPart
+	{
+	}
+
+	public class Differential : CarPart
+	{
+	}
+
+	public class Wheel : CarPart
+	{
+	}
+
+	public class ElectricCar : Car<ElectricEngine> 
+	{
+		public override void ChangePart<TPart>(TPart newPart)
+		{
+		
+		}
+	}
+
+	public class GasCar : Car<GasEngine> 
+	{
+		public override void ChangePart<TPart>(TPart newPart)
+		{
+		
+		}
+	}
+}
